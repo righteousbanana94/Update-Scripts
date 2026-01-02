@@ -2,7 +2,7 @@
 
 # Update all with -a
 All() {
-    echo "Updating all components..."
+    echo -e "\nUpdating all components..."
     sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
     flatpak update -y
     sudo apt install python3 -y
