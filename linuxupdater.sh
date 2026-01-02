@@ -8,6 +8,14 @@ All() {
     sudo apt install python3 -y
     exit 0
 }
+
+# installs git
+
+git() {
+echo -e "\nInstalling git" 
+sudo apt update && sudo apt install -y git
+exit 0
+}
 # Help display with -h
 help() {
     echo "Linux Update Assistant Script"
@@ -22,6 +30,7 @@ help() {
     echo "  -h, --help    Show this help message"
     echo "  -v, --version Show version information"
     echo "  -a, --all     Run all update functions"
+    echo "  -g, --git     Run git installer"
     exit 0
 }
 # Version Display with -v
@@ -89,6 +98,7 @@ while true; do
 # Argument options
 
 case "$1" in
+    -g|--git) git ;;
     -h|--help) help ;;
     -v|--version) version ;;
     -a|--all) All ;;
