@@ -50,8 +50,8 @@ This script accepts optional command-line arguments to run specific actions with
 ### Examples
 
 ```bash
-./linux-update-assistant.sh        # Interactive menu
-./linux-update-assistant.sh -a     # Run all updates
-./linux-update-assistant.sh --help # Show help
+./scriptname.sh        # Interactive menu
+./scriptname.sh  -a     # Run all updates
+./scriptname.sh  --help # Show help
 ```
 
