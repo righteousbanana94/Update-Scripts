@@ -6,6 +6,7 @@ All() {
     sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
     flatpak update -y
     sudo apt install python3 -y
+    sudo apt install -y git
     exit 0
 }
 
@@ -24,7 +25,8 @@ help() {
     echo "1. Run system software updates"
     echo "2. Run Flatpak updates"
     echo "3. Install python3"
-    echo "4. Quit"
+    echo "4. Install Git"
+    echo "5. Quit"
     echo "Usage: $0 [options]"
     echo "Options:"
     echo "  -h, --help    Show this help message"
@@ -49,11 +51,12 @@ while true; do
         echo "1. Run system software updates"
         echo "2. Run Flatpak updates"
         echo "3. Install python3"
-        echo "4. Quit"
+        echo "4. Install git"
+        echo "5. Quit"
         echo
         echo "Use -h or --help for more information"
         echo
-        read -p "Choose an option (1-4 ): " choice
+        read -p "Choose an option (1-5 ): " choice
         
         case "$choice" in
             1) echo "Selected: System software updates"
@@ -87,7 +90,17 @@ while true; do
                     *) echo "Invalid response: $answer" ;;
                 esac
                 ;;
-            4) echo "Bye."; exit 0 ;;
+            4) echo "Selected: Install Git"
+                read -p "Would you like to continue with the Git installation? y/n: " answer
+                case "$answer" in
+                    y|Y) echo "Continuing with the installation..."
+                    sudo apt update && sudo apt install -y git
+                    ;;
+                    n|N) echo "Aborting installation" ;;
+                    *) echo "Invalid response: $answer" ;;
+                esac
+                ;;
+            5) echo "Bye."; exit 0 ;;
             help|--help|h) help ;;
             *) echo "Invalid choice: $choice" ;;
         esac

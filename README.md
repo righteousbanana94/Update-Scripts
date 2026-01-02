@@ -37,11 +37,15 @@ This script accepts optional command-line arguments to run specific actions with
 - `-v`, `--version`  
   Show version and author information and exit.
 
+- `-g`, `-git`
+  Installs git
+
 - `-a`, `--all`  
   Run all update actions automatically:
   - System package updates
   - Flatpak updates
   - Install `python3`
+  - install `git`
 
 ### Examples
 
