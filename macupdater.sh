@@ -4,22 +4,30 @@
 # Help Display Function
 help()
 {	
-	echo
-	echo "Mac Update Assistant Script"
+	echo -e "\nMac Update Assistant Script"
 	echo "This script helps you manage updates on your Mac."
 	echo "Options:"
 	echo "1. Run macOS software updates"
 	echo "2. Run Homebrew updates"
 	echo "3. Run App Store updates"
-	echo "4. Quit"
+	echo "4. Install or update git" 
+	echo "5. Quit"
 	echo "Usage: $0 [options]"
 	echo "Options:"
 	echo "  -h, --help    Show this help message"
 	echo "  -v, --version Show version information"
 	echo "  -a, --all     Run all update functions"
+	echo "  -g, --git	  Run git install or update"
 	exit 0
 }
 
+#git installer
+
+git() {
+	echo -e "\nRunning git installation..."
+	brew install git
+	exit 0
+}
 # Version Display Function
 version()
 {		
@@ -47,10 +55,11 @@ main() {
 		echo "1. Run macOS software updates"
 		echo "2. Run Homebrew updates"
 		echo "3. Run App Store updates"
-		echo "4. Quit"
+		echo "4. Install or update git"
+		echo "5. Quit"
 		echo
 
-		read -p "Choose an option (1-4): " choice
+		read -p "Choose an option (1-5): " choice
 		case "$choice" in
 			1) echo "Selected: macOS software updates"
 				read -p "Would you like to continue? y/n: " answer
@@ -82,7 +91,18 @@ main() {
 					*) echo "Invalid response: $answer" ;;
 				esac
 				;;
-			4) echo "Bye."; exit 0 ;;
+			4) echo "Selected: Install Git"
+				read -p "Would you like to continue? y/n: " answer
+				case "$answer" in
+					y|Y) echo "Continuing with git installation..."
+					brew install git
+					;;
+					n|N) echo "Aborting git installation"
+					;;
+					*) echo "invalid response: $answer" ;;
+				esac
+				;;
+			5) echo "Bye."; exit 0 ;;
 			help|--help|h) help ;;
 			*) echo "Invalid choice: $choice" ;;
 			esac
@@ -95,6 +115,7 @@ case "$1" in
 	-h|--help) help ;;
 	-v|--version) version ;;
 	-a|--all) All ;;
+	-g|--git) git ;; 
 	*) echo -e "\nInvalid option: $1" ; help ;;
 esac
 
