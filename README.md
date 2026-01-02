@@ -45,7 +45,7 @@ This script accepts optional command-line arguments to run specific actions with
   - System package updates
   - Flatpak updates
   - Install `python3`
-  - install `git`
+  - Install `git`
 
 ### Examples
 
