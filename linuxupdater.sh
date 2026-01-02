@@ -31,7 +31,7 @@ help() {
     echo "  -v, --version Show version information"
     echo "  -a, --all     Run all update functions"
     echo "  -g, --git     Run git installer"
-    exit 0
+    echo
 }
 # Version Display with -v
 version() {
