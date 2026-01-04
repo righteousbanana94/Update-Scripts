@@ -43,6 +43,7 @@ All() {
 	sudo softwareupdate -ia
 	brew update && brew upgrade && brew cleanup
 	brew list mas && brew install mas && mas outdated && mas upgrade
+	brew install git
 	exit 0
 }
 # Main Menu Function
