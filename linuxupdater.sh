@@ -19,7 +19,7 @@ exit 0
 }
 # Help display with -h
 help() {
-    echo "Linux Update Assistant Script"
+    echo -e "\nLinux Update Assistant Script"
     echo "This script helps you manage updates on your Linux system."
     echo "Options:"
     echo "1. Run system software updates"
@@ -37,7 +37,7 @@ help() {
 }
 # Version Display with -v
 version() {
-    echo "Linux Update Assistant Script Version 1.0"
+    echo -e "\nLinux Update Assistant Script Version 1.0"
     echo "Author: Daniel Berkley"
     echo "License: MIT License"
     exit 0
@@ -59,50 +59,50 @@ while true; do
         read -p "Choose an option (1-5 ): " choice
         
         case "$choice" in
-            1) echo "Selected: System software updates"
+            1) echo -e "\nSelected: System software updates"
                 read -p "Would you like to continue? y/n: " answer
                 case "$answer" in
-                    y|Y) echo "Continuing with system software updates..." 
+                    y|Y) echo -e "\nContinuing with system software updates..." 
                     sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
                     ;;
-                    n|N) echo "Aborting system software updates." ;;
-                    *) echo "Invalid response: $answer" ;;
+                    n|N) echo -e "\nAborting system software updates." ;;
+                    *) echo -e "\nInvalid response: $answer" ;;
                     
                 esac
                 ;;
-            2) echo "Selected: Flatpak updates"
+            2) echo -e "\nSelected: Flatpak updates"
                 read -p "Would you like to continue? y/n: " answer
                 case "$answer" in
-                    y|Y) echo "Continuing with Flatpak updates..." 
+                    y|Y) echo -e "\nContinuing with Flatpak updates..." 
                     flatpak update -y
                     ;;
-                    n|N) echo "Aborting Flatpak updates." ;;
-                    *) echo "Invalid response: $answer" ;;
+                    n|N) echo -e "\nAborting Flatpak updates." ;;
+                    *) echo -e "\nInvalid response: $answer" ;;
                 esac
                 ;;
-            3) echo "Selected: Install python3"
+            3) echo -e "\nSelected: Install python3"
                 read -p "Would you like to continue? y/n: " answer
                 case "$answer" in
-                    y|Y) echo "Continuing with python3 installation..."
+                    y|Y) echo -e "\nContinuing with python3 installation..."
                     sudo apt install python3 -y
                     ;;
-                    n|N) echo "Aborting python3 installation." ;;
-                    *) echo "Invalid response: $answer" ;;
+                    n|N) echo -e "\nAborting python3 installation." ;;
+                    *) echo -e "\nInvalid response: $answer" ;;
                 esac
                 ;;
-            4) echo "Selected: Install Git"
+            4) echo -e "\nSelected: Install Git"
                 read -p "Would you like to continue with the Git installation? y/n: " answer
                 case "$answer" in
-                    y|Y) echo "Continuing with the installation..."
+                    y|Y) echo -e "\nContinuing with the installation..."
                     sudo apt update && sudo apt install -y git
                     ;;
-                    n|N) echo "Aborting installation" ;;
-                    *) echo "Invalid response: $answer" ;;
+                    n|N) echo -e "\nAborting installation" ;;
+                    *) echo -e "\nInvalid response: $answer" ;;
                 esac
                 ;;
-            5) echo "Bye."; exit 0 ;;
+            5) echo -e "\nBye."; exit 0 ;;
             help|--help|h) help ;;
-            *) echo "Invalid choice: $choice" ;;
+            *) echo -e "\nInvalid choice: $choice" ;;
         esac
 
     
