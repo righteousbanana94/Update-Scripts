@@ -31,7 +31,7 @@ git() {
 # Version Display Function
 version()
 {		
-	echo "Mac Update Assistant Script Version 1.0"
+	echo -e "\nMac Update Assistant Script Version 1.0"
 	echo "Author: Daniel Berkley"
 	echo "License: MIT License"
 	exit 0
@@ -39,7 +39,7 @@ version()
 
 # Update All
 All() {
-	echo "Updating all components..."
+	echo -e "\nUpdating all components..."
 	sudo softwareupdate -ia
 	brew update && brew upgrade && brew cleanup
 	brew list mas && brew install mas && mas outdated && mas upgrade
@@ -62,50 +62,50 @@ main() {
 
 		read -p "Choose an option (1-5): " choice
 		case "$choice" in
-			1) echo "Selected: macOS software updates"
+			1) echo -e "\nSelected: macOS software updates"
 				read -p "Would you like to continue? y/n: " answer
 				case "$answer" in
-					y|Y) echo "Continuing with macOS software updates..." 
+					y|Y) echo -e "\nContinuing with macOS software updates..." 
 					sudo softwareupdate -ia 
 					;;
-					n|N) echo "Aborting macOS software updates." ;;
-					*) echo "Invalid response: $answer" ;;
+					n|N) echo -e "\nAborting macOS software updates." ;;
+					*) echo -e "\nInvalid response: $answer" ;;
 				esac
 				;;
-			2) echo "Selected: Homebrew updates"
+			2) echo -e "\nSelected: Homebrew updates"
 				read -p "Would you like to continue? y/n: " answer
 				case "$answer" in
-					y|Y) echo "Continuing with Homebrew updates..." 
+					y|Y) echo -e "\nContinuing with Homebrew updates..." 
 					brew update && brew upgrade && brew cleanup 
 					;;
-					n|N) echo "Aborting Homebrew updates." ;;
-					*) echo "Invalid response: $answer" ;;
+					n|N) echo -e "\nAborting Homebrew updates." ;;
+					*) echo -e "\nInvalid response: $answer" ;;
 				esac
 				;;
-			3) echo "Selected: App Store updates"
+			3) echo -e "\nSelected: App Store updates"
 				read -p "Would you like to continue? y/n: " answer
 				case "$answer" in
-					y|Y) echo "Continuing with App Store updates..." 
+					y|Y) echo -e "\nContinuing with App Store updates..." 
 					brew list mas && brew install mas && mas outdated && mas upgrade
 					;;
-					n|N) echo "Aborting App Store updates." ;;
-					*) echo "Invalid response: $answer" ;;
+					n|N) echo -e "\nAborting App Store updates." ;;
+					*) echo -e "\nInvalid response: $answer" ;;
 				esac
 				;;
-			4) echo "Selected: Install Git"
+			4) echo -e "\nSelected: Install Git"
 				read -p "Would you like to continue? y/n: " answer
 				case "$answer" in
-					y|Y) echo "Continuing with git installation..."
+					y|Y) echo -e "\nContinuing with git installation..."
 					brew install git
 					;;
-					n|N) echo "Aborting git installation"
+					n|N) echo -e "\nAborting git installation"
 					;;
-					*) echo "invalid response: $answer" ;;
+					*) echo -e "\nInvalid response: $answer" ;;
 				esac
 				;;
-			5) echo "Bye."; exit 0 ;;
+			5) echo -e "\nBye."; exit 0 ;;
 			help|--help|h) help ;;
-			*) echo "Invalid choice: $choice" ;;
+			*) echo -e "\nInvalid choice: $choice" ;;
 			esac
 
 	done
