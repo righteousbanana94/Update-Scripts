@@ -3,7 +3,11 @@
 ALL()
 {
     echo "Installing all Security tools..."
-    apt-get update && apt-get install nmap wireshark tcpdump metasploit-framework -y
+    brew install nmap 
+    brew install wireshark 
+    brew install tcpdump 
+    brew install metasploit
+    brew install --cask burp-suite
 }
 Help()
 {
@@ -14,55 +18,59 @@ Help()
 }
 
 # Selection menu
-echo "+--------------------------------+"
-echo "|Security Operations Batch loader|"
-echo "+--------------------------------+"
-echo "1. Install nmap"
-echo "2. Install wireshark"
-echo "3. Install tcpdump"
-echo "4. Install metasploit"
-echo "5. Install burpsuite"
-echo "6. Exit"
-read option
+main()
+{
+  echo "+--------------------------------+"
+  echo "|Security Operations Batch loader|"
+  echo "+--------------------------------+"
+  echo "1. Install nmap"
+  echo "2. Install wireshark"
+  echo "3. Install tcpdump"
+  echo "4. Install metasploit"
+  echo "5. Install burpsuite"
+  echo "6. Exit"
+  read option
 
-case $option in
-  1)
-    echo "Installing nmap...";
-    brew install nmap
-    ;;
-  2)
-    echo "Installing wireshark...";
-    brew install wireshark-app
-    ;;
-  3)
-    echo "Installing tcpdump...";
-    brew install tcpdump
-    ;;
-  4)
-    echo "Installing metasploit...";
-    brew install metasploit
-    ;;
-  5)
-    echo "Installing burpsuite...";
-    brew install burpsuite  
-    ;;
-  6)
-    echo "Exiting..."
-    exit 0
-    ;;
-  *)
-    echo "Invalid option. Please select between 1-6."
-    ;;
+    case $option in
+    1)
+      echo "Installing nmap...";
+      brew install nmap
+      ;;
+    2)
+      echo "Installing wireshark...";
+      brew install wireshark-app
+      ;;
+    3)
+      echo "Installing tcpdump...";
+      brew install tcpdump
+      ;;
+    4)
+      echo "Installing metasploit...";
+      brew install metasploit
+      ;;
+    5)
+      echo "Installing burpsuite...";
+      brew install --cask burp-suite
+      ;;
+    6)
+      echo "Exiting..."
+      exit 0
+      ;;
+    *)
+      echo "Invalid option. Please select between 1-6."
+      ;;
+  esac
+}
+
+case "$1" in
+-A|-a)
+  ALL
+  ;;
+-H|-h) 
+  Help
+  ;;
+*)
+  echo "Invalid option. Use -H for help."
+  exit 1
+  ;;
 esac
-
-case $option in
-  ALL|-a)
-    ALL
-    ;;
-  Help|-h)
-    Help
-    ;;
-  *)
-    echo "Invalid option. Please select between 1-6."
-    ;;
-esac    
