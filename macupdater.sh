@@ -18,6 +18,16 @@ help()
 	echo "  -v, --version Show version information"
 	echo "  -a, --all     Run all update functions"
 	echo "  -g, --git	  Run git install or update"
+	echo "  -b, --brew    Run Homebrew install"
+	exit 0
+}
+
+
+#homebrew installer
+
+brew() {
+	echo -e "\nRunning Homebrew installation..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	exit 0
 }
 
@@ -116,7 +126,8 @@ case "$1" in
 	-h|--help) help ;;
 	-v|--version) version ;;
 	-a|--all) All ;;
-	-g|--git) git ;; 
+	-g|--git) git ;;
+	-b|--brew) brew ;;
 	*) echo -e "\nInvalid option: $1" ; help ;;
 esac
 
