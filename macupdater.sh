@@ -25,7 +25,7 @@ help()
 
 #homebrew installer
 
-brew() {
+brew_install() {
 	echo -e "\nRunning Homebrew installation..."
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	exit 0
@@ -33,7 +33,7 @@ brew() {
 
 #git installer
 
-git() {
+git_install() {
 	echo -e "\nRunning git installation..."
 	brew install git
 	exit 0
@@ -126,8 +126,8 @@ case "$1" in
 	-h|--help) help ;;
 	-v|--version) version ;;
 	-a|--all) All ;;
-	-g|--git) git ;;
-	-b|--brew) brew ;;
+	-g|--git) git_install ;;
+	-b|--brew) brew_install ;;
 	*) echo -e "\nInvalid option: $1" ; help ;;
 esac
 
